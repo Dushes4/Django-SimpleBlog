@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Лента{% endblock %}
+{% block content %}
+    <div class="feed">
+        {% for post in posts %}
+        <a href="/blog/post/{{post.id}}">
+            <div class="post">
+                <div class="post_title">{{post.title}} </div>
+                <div class="post_comments">{{post.comments.count}} комментариев</div>
+                <div class="post_text">{{post.text}}</div>
+                <div class="post_user">{{post.user.username}}</div>
+                <div class="post_datetime">{{post.publish}}</div>
+
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% include "pagination.html" with page=posts %}
+{% endblock %}

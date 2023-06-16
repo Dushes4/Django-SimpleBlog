@@ -1,0 +1,28 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header_title">
+            <a href="/blog/">БЛОГ</a>
+        </div>
+        <div class="header_create_post">
+            <a href="/blog/create_post/">Новый пост</a>
+        </div>
+        <div class="header_auth">
+            {% if not user.is_authenticated %}
+            <a href="/blog/login/">Вход</a> |
+            <a href="/blog/register/">Регистрация</a>
+            {% else %}
+            {{user.username}} |
+            <a href="/blog/logout/">Выход</a>
+            {% endif %}
+        </div>
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Новый пост{% endblock %}
+{% block content %}
+    <form class="post_form" method="POST">
+        <div class="post_form_container">
+            <div class="post_form_label">Заголовок</div>
+            {{form.title}}
+            {{form.title.errors}}
+            <div class="post_form_label">Текст</div>
+            {{form.text}}
+            {{form.text.errors}}
+            {% csrf_token %}
+            <input type="submit" id="post_form_submit" class="post_form_submit" value="Отправить">
+        </div>
+    </form>
+{% endblock %}
